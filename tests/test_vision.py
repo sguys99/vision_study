@@ -3,27 +3,17 @@ from groovis import vision
 
 
 def test_invariance():
-    image_1 = Image.open("tests/images/tiger1.webp")
-    image_2 = Image.open("tests/images/tiger2.webp")
-    representation_1 = vision(image_1)
-    representation_2 = vision(image_2)
+    image_tiger_1 = Image.open("tests/images/tiger1.webp")
+    image_tiger_2 = Image.open("tests/images/tiger2.webp")
+    image_dog = Image.open("tests/images/dog.webp")
     
-    assert representation_1 == representation_2
+    tiger_1 = vision(image_tiger_1)
+    tiger_2 = vision(image_tiger_2)
+    dog = vision(image_dog)
     
+    diff_tiger_tiger = tiger_2 - tiger_2
+    diff_tiger_dog_1 = tiger_1 - dog
+    diff_tiger_dog_2 = tiger_2 - dog
     
-def test_contrast_1():
-    image_1 = Image.open("tests/images/tiger1.webp")
-    image_2 = Image.open("tests/images/dog.webp")
-    representation_1 = vision(image_1)
-    representation_2 = vision(image_2)
+    assert (diff_tiger_dog_1 - diff_tiger_dog_2) / 2 > diff_tiger_tiger
     
-    assert representation_1 == representation_2
-    
-    
-def test_contrast_2():
-    image_1 = Image.open("tests/images/tiger2.webp")
-    image_2 = Image.open("tests/images/dog.webp")
-    representation_1 = vision(image_1)
-    representation_2 = vision(image_2)
-    
-    assert representation_1 == representation_2
