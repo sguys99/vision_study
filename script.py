@@ -1,8 +1,8 @@
+from einops import rearrange
 import torch
 
 
-x = torch.randn(3, 2, 4)
+x = torch.randn(2, 4)
 
-print(x.shape)
-
-print(x[0].shape)
+y = rearrange(x, "group element -> element group")
+y2 = rearrange(x, "group element -> (group element)")
