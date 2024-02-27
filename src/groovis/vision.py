@@ -8,7 +8,7 @@ PATCH_SIZE = 16
 
 class Vision:
     def __init__(self) -> None:
-        self.weight = torch.rand(1024, 3, 16, 16) / (3*16*16)
+        self.weight = torch.randn(1024, 3, 16, 16) / (3*16*16)
         
     def __call__(self, image: torch.Tensor) -> torch.Tensor:
 
