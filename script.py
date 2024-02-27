@@ -17,9 +17,9 @@ for i in range(100):
     
     vision_explore.weight += STEP_SIZE * torch.randn_like(vision_explore.weight)
     
-    image_tiger_1 = image_path_to_tensor("tests/images/tiger1.webp")
-    image_tiger_2 = image_path_to_tensor("tests/images/tiger2.webp")
-    image_dog = image_path_to_tensor("tests/images/dog.webp")
+    image_tiger_1 = image_path_to_tensor("data/train/tiger1.webp")
+    image_tiger_2 = image_path_to_tensor("data/train/tiger2.webp")
+    image_dog = image_path_to_tensor("data/train/dog.webp")
     
     tiger_1 = vision_explore(image_tiger_1)
     tiger_2 = vision_explore(image_tiger_2)
