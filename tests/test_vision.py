@@ -1,11 +1,14 @@
 from PIL import Image
 import torch.nn.functional as F
 
-from groovis import vision
+from groovis import Vision
 from groovis.utils import image_path_to_tensor
 
 
 def test_invariance():
+    
+    vision = Vision()
+    
     image_tiger_1 = image_path_to_tensor("tests/images/tiger1.webp")
     image_tiger_2 = image_path_to_tensor("tests/images/tiger2.webp")
     image_dog = image_path_to_tensor("tests/images/dog.webp")

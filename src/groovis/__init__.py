@@ -1,1 +1,2 @@
-from .vision import vision
+from .vision import Vision
+
