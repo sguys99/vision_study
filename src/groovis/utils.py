@@ -13,4 +13,4 @@ def image_path_to_tensor(path: str) -> torch.Tensor:
     image = rearrange(image, "h w c -> c h w")
     return image
 
-image = image_path_to_tensor("tests/images/dog.webp")
+image = image_path_to_tensor("data/test/dog.webp")
