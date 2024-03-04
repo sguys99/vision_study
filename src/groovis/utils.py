@@ -5,12 +5,12 @@ import numpy as np
 
 IMAGE_SIZE = 224
 
-def image_path_to_tensor(path: str) -> torch.Tensor:
-    image = Image.open(path).resize((IMAGE_SIZE, IMAGE_SIZE))
+
+def image_path_to_array(path: str) -> np.ndarray:
+    image = Image.open(path)
     image = np.array(image)
 
-    image = torch.tensor(image, dtype = torch.float) / 255.0
-    image = rearrange(image, "h w c -> c h w")
+    # image = torch.tensor(image, dtype = torch.float) / 255.0
+    # image = rearrange(image, "h w c -> c h w")
+    
     return image
-
-image = image_path_to_tensor("data/test/dog.webp")
