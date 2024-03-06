@@ -2,6 +2,7 @@ import albumentations as A
 from albumentations.pytorch.transforms import ToTensorV2
 from PIL import Image
 import numpy as np
+import torch
 from torch.utils.data import Dataset
 from groovis.utils import image_path_to_array
 
@@ -45,11 +46,12 @@ class Animals(Dataset):
         
         self.transofroms = transforms
     
-    def __getitem__(self, index):
+    def __getitem__(self, index) -> list[torch.Tensor]:
         image = image_path_to_array(self.paths[index])
-        augmented_image = self.transofroms(image=image)["image"]
         
-        return augmented_image / 255.0  # 텐서임
+        return [
+            self.transofroms(image=image)["image"] / 255.0 for _ in range(2)
+            ]
     
     def __len__(self):
         return len(self.paths)
